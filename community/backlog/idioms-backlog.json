@@ -996,7 +996,7 @@
     "meaning": "Hold someone back. (Set 6)",
     "id": 111,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "japanese": "骨が折れる",
@@ -1013,7 +1013,7 @@
     "english": "Spirit doesn't proceed",
     "meaning": "Not feel like doing it. (Set 6)",
     "id": 113,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
