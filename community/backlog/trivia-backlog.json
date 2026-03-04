@@ -1676,8 +1676,10 @@
       "Osaka Castle"
     ],
     "correctIndex": 0,
-    "issued": true,
-    "completed": false
+    "issued": false,
+    "completed": true,
+    "completedBy": "forestlioooooo",
+    "completedPR": 7194
   },
   {
     "id": 121,
