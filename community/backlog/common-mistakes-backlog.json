@@ -927,7 +927,7 @@
     "explanation": "わかる takes が. (Pattern set 6)",
     "id": 116,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "wrong": "宿題を忘れないよう、メモします。",
@@ -935,14 +935,14 @@
     "explanation": "Use ように for purpose/prevention. (Pattern set 6)",
     "id": 117,
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "wrong": "駅まで十分歩きますかかる。",
     "correct": "駅まで歩いて十分かかる。",
     "explanation": "Use natural collocation and order. (Pattern set 6)",
     "id": 118,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
