@@ -270,9 +270,10 @@
     "secondaryColor": "oklch(58.0% 0.060 260.0 / 1)"
   },
   {
-    "name": "Ocean Blue",
-    "accent": "#0066CC",
-    "background": "#001133"
+    "id": "ocean-blue",
+  "backgroundColor": "oklch(0.0% 0.0 0 / 1)", 
+  "mainColor": "oklch(40.0% 0.050 210.0 / 1)",
+  "secondaryColor": "oklch(30.0% 0.030 190.0 / 1)"
   },
   {
     "id": "mochi-pastel",
