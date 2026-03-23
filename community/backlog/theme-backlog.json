@@ -53,7 +53,9 @@
     "mainColor": "oklch(85.0% 0.185 260.0 / 1)",
     "secondaryColor": "oklch(75.0% 0.145 290.0 / 1)",
     "issued": false,
-    "completed": false
+    "completed": true,
+    "completedBy": "Mary-ashraf",
+    "completedPR": 9869
   },
   {
     "id": "matcha-cream",
@@ -810,8 +812,10 @@
     "backgroundColor": "oklch(20.0% 0.045 290.0 / 1)",
     "mainColor": "oklch(68.0% 0.155 315.0 / 1)",
     "secondaryColor": "oklch(75.0% 0.125 280.0 / 1)",
-    "issued": true,
-    "completed": false
+    "issued": false,
+    "completed": true,
+    "completedBy": "inoovador",
+    "completedPR": 9856
   },
   {
     "id": "lucky-bamboo",
@@ -1689,7 +1693,7 @@
     "mainColor": "oklch(86.0% 0.165 95.0 / 1)",
     "secondaryColor": "oklch(70.0% 0.115 75.0 / 1)",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": "coastal-breeze",
@@ -1699,7 +1703,7 @@
     "mainColor": "oklch(80.0% 0.120 210.0 / 1)",
     "secondaryColor": "oklch(70.0% 0.085 195.0 / 1)",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": "hanami-pink",
@@ -1709,7 +1713,9 @@
     "mainColor": "oklch(70.0% 0.165 350.0 / 1)",
     "secondaryColor": "oklch(78.0% 0.110 25.0 / 1)",
     "issued": false,
-    "completed": false
+    "completed": true,
+    "completedBy": "Mary-ashraf",
+    "completedPR": 9874
   },
   {
     "id": "saffron-dusk",
