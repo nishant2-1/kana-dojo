@@ -36,7 +36,7 @@
     "game": "Steins;Gate: My Darling's Embrace",
     "character": "Rintaro Okabe",
     "id": 4,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -76,7 +76,7 @@
     "game": "Kingdom Hearts series (JP dub)",
     "character": "Sora",
     "id": 8,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -86,7 +86,7 @@
     "game": "Street Fighter series",
     "character": "Ryu",
     "id": 9,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -106,7 +106,7 @@
     "game": "Monster Hunter series",
     "character": "Guild Handler lines",
     "id": 11,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -196,7 +196,7 @@
     "game": "Samurai game proverb line",
     "character": "Musashi reference",
     "id": 20,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -336,7 +336,7 @@
     "game": "Yakuza: Like a Dragon",
     "character": "Ichiban Kasuga",
     "id": 34,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -366,7 +366,7 @@
     "game": "Persona 5 Strikers",
     "character": "Joker",
     "id": 37,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -466,7 +466,7 @@
     "game": "Dragon Quest series",
     "character": "Recurring command voice",
     "id": 47,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -486,7 +486,7 @@
     "game": "Street Fighter series",
     "character": "Ryu",
     "id": 49,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -516,7 +516,7 @@
     "game": "Pokemon series",
     "character": "Rival characters",
     "id": 52,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -526,7 +526,7 @@
     "game": "Final Fantasy Type-0",
     "character": "Class Zero",
     "id": 53,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -806,7 +806,7 @@
     "game": "The Prince of Tennis: Sweat & Tears 2",
     "character": "Ryoma Echizen",
     "id": 81,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -896,7 +896,7 @@
     "game": "Dragon Quest XI",
     "character": "Hero / party lines",
     "id": 90,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {

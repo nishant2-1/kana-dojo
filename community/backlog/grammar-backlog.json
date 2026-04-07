@@ -32,7 +32,7 @@
   {
     "id": 6,
     "text": "\"〜ながら\" connects actions to show two things happening at the same time.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -111,7 +111,7 @@
     "id": 19,
     "text": "\"〜なら\" means \"if\" or \"in the case of\" and often gives advice.",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 20,
@@ -236,7 +236,7 @@
   {
     "id": 40,
     "text": "\"〜うちに\" means \"while\" or \"before\" something changes.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -278,7 +278,7 @@
   {
     "id": 47,
     "text": "\"〜に決まっている\" means \"must be\" or \"definitely\".",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -290,7 +290,7 @@
   {
     "id": 49,
     "text": "\"〜ながらも\" means \"even while\" or \"though\" (contrast).",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -339,7 +339,7 @@
     "id": 57,
     "text": "\"〜わけがない\" means \"there is no way that...\".",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 58,
@@ -476,7 +476,7 @@
   {
     "id": 80,
     "text": "\"〜てはじめて\" means \"only after...\".",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -501,7 +501,7 @@
     "id": 84,
     "text": "\"〜を通して\" means \"through / throughout...\".",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 85,
@@ -560,7 +560,7 @@
   {
     "id": 94,
     "text": "\"〜そうです\" can report hearsay (\"I heard that...\"). (practice variation 9)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -602,13 +602,13 @@
   {
     "id": 101,
     "text": "\"〜てもらう\" means \"receive a favor\" from someone. (practice variation 16)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
     "id": 102,
     "text": "\"〜てあげる\" shows the speaker does a favor for someone else. (practice variation 17)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -662,7 +662,7 @@
   {
     "id": 111,
     "text": "\"〜まま\" means \"as is\" or \"unchanged\". (practice variation 26)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -800,7 +800,7 @@
   {
     "id": 134,
     "text": "\"〜ながらも\" means \"even while\" or \"though\" (contrast). (practice variation 49)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -824,7 +824,7 @@
   {
     "id": 138,
     "text": "\"〜せいで\" indicates a negative cause, \"because of\". (practice variation 53)",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {

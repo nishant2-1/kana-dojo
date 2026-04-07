@@ -87,7 +87,7 @@
     "english": "A cane before falling",
     "meaning": "Prevention is better than cure",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 11,
@@ -366,7 +366,7 @@
     "english": "Carelessness is the greatest enemy",
     "meaning": "Don't let your guard down",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 42,
@@ -555,7 +555,7 @@
     "english": "It's darkest under the lighthouse",
     "meaning": "The obvious is often overlooked",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 63,
@@ -609,7 +609,7 @@
     "english": "Fortune comes to a laughing gate",
     "meaning": "Good fortune comes to those who smile",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 69,
@@ -852,7 +852,7 @@
     "english": "Sometimes losing is winning",
     "meaning": "Conceding can be the best outcome",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 96,
@@ -879,7 +879,7 @@
     "english": "A rice cake falls from the shelf",
     "meaning": "Unexpected good luck",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 99,
@@ -933,7 +933,7 @@
     "english": "An inch ahead is darkness",
     "meaning": "The future is uncertain",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 105,
@@ -1230,7 +1230,7 @@
     "english": "One stone, two birds",
     "meaning": "Do two things with one action",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 138,
@@ -1356,7 +1356,9 @@
     "english": "After the rain, the ground hardens",
     "meaning": "Hard times build resilience",
     "completed": false,
-    "issued": false
+    "issued": false,
+    "completedBy": "Luca12341234",
+    "completedPR": 12103
   },
   {
     "id": 152,
@@ -1365,7 +1367,7 @@
     "english": "The day you decide is a lucky day",
     "meaning": "Start now",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 153,
@@ -1446,7 +1448,7 @@
     "english": "An inch ahead is darkness",
     "meaning": "The future is uncertain",
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 162,
@@ -1454,7 +1456,7 @@
     "romaji": "Warau kado ni wa fuku kitaru",
     "english": "Good fortune comes to a laughing home",
     "meaning": "Happiness invites luck",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1481,7 +1483,7 @@
     "romaji": "Hayaoki wa sanmon no toku",
     "english": "Early rising brings three coins of benefit",
     "meaning": "Wake early for advantage",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1617,6 +1619,6 @@
     "english": "Even a walking dog will hit a stick",
     "meaning": "Acting can lead to luck or trouble",
     "completed": false,
-    "issued": false
+    "issued": true
   }
 ]

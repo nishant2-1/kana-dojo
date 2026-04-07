@@ -66,7 +66,7 @@
       "Kyushu"
     ],
     "correctIndex": 1,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -151,7 +151,7 @@
     ],
     "correctIndex": 1,
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 12,
@@ -235,7 +235,7 @@
     ],
     "correctIndex": 1,
     "completed": false,
-    "issued": false
+    "issued": true
   },
   {
     "id": 18,
@@ -486,7 +486,7 @@
       "Romaji"
     ],
     "correctIndex": 0,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -514,7 +514,7 @@
       "Kiku"
     ],
     "correctIndex": 0,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -696,7 +696,7 @@
       "Himeji Castle"
     ],
     "correctIndex": 0,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1186,7 +1186,7 @@
       "Kyushu"
     ],
     "correctIndex": 1,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1270,7 +1270,7 @@
       "Sayonara"
     ],
     "correctIndex": 1,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1326,7 +1326,7 @@
       "Mount Tate"
     ],
     "correctIndex": 1,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1368,7 +1368,7 @@
       "Okayama"
     ],
     "correctIndex": 0,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1438,7 +1438,7 @@
       "Comique"
     ],
     "correctIndex": 0,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1536,7 +1536,7 @@
       "Kyogen"
     ],
     "correctIndex": 0,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1858,7 +1858,7 @@
       "Mount Haku"
     ],
     "correctIndex": 0,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
@@ -1942,7 +1942,7 @@
       "Hiroshima"
     ],
     "correctIndex": 0,
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
