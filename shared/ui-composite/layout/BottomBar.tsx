@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import {
   Coffee,
+  Bug,
   Palette,
   GitBranch,
   Type,
@@ -44,6 +45,11 @@ const socialLinks: SocialLink[] = [
     icon: faGithub,
     url: 'https://github.com/lingdojo/kana-dojo',
     type: 'fontawesome',
+  },
+  {
+    icon: Bug,
+    url: 'https://tally.so/r/2E4rB9',
+    type: 'lucide',
   },
   {
     icon: Coffee,
