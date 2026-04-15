@@ -92,6 +92,9 @@ const TrainingActionBar: React.FC<ITopBarProps> = ({
     left: 0,
     width: '100%',
   });
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
+  const lastScrollY = useRef(0);
 
   const placeholderRef = useRef<HTMLDivElement | null>(null);
 
@@ -164,6 +167,56 @@ const TrainingActionBar: React.FC<ITopBarProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
+    const updateViewport = () => setIsMobileViewport(mediaQuery.matches);
+
+    updateViewport();
+    mediaQuery.addEventListener('change', updateViewport);
+
+    return () => {
+      mediaQuery.removeEventListener('change', updateViewport);
+    };
+  }, []);
+
+  useEffect(() => {
+    const scrollContainer = document.querySelector(
+      '[data-scroll-restoration-id="container"]',
+    );
+
+    if (!scrollContainer) {
+      console.warn(
+        'Scroll container not found, TrainingActionBar scroll behavior disabled',
+      );
+      return;
+    }
+
+    const handleScroll = () => {
+      const currentScrollY = scrollContainer.scrollTop;
+
+      if (currentScrollY <= 10) {
+        setIsSidebarVisible(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        setIsSidebarVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        setIsSidebarVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    scrollContainer.addEventListener('scroll', handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      scrollContainer.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const targetBottom =
+    isMobileViewport && !isSidebarVisible ? 0 : layout.bottom;
+
   return (
     <>
       {/* Invisible placeholder to measure parent width/position */}
@@ -176,11 +229,13 @@ const TrainingActionBar: React.FC<ITopBarProps> = ({
         {isFilled && (
           <motion.div
             initial={{ y: '100%', opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            animate={{ y: 0, opacity: 1, bottom: targetBottom }}
             exit={{ y: '100%', opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            transition={{
+              duration: 0.3,
+              ease: [0.4, 0, 0.2, 1],
+            }}
             style={{
-              bottom: `${layout.bottom}px`,
               left:
                 typeof layout.left === 'number'
                   ? `${layout.left}px`

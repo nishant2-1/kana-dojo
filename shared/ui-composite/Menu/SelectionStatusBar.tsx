@@ -82,7 +82,6 @@ const SelectionStatusBar = () => {
     width: '100%',
   });
   const [isVisible, setIsVisible] = useState(true);
-  const [isMobileViewport, setIsMobileViewport] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -134,18 +133,6 @@ const SelectionStatusBar = () => {
   }, []);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 1023px)');
-    const updateViewport = () => setIsMobileViewport(mediaQuery.matches);
-
-    updateViewport();
-    mediaQuery.addEventListener('change', updateViewport);
-
-    return () => {
-      mediaQuery.removeEventListener('change', updateViewport);
-    };
-  }, []);
-
-  useEffect(() => {
     const scrollContainer = document.querySelector(
       '[data-scroll-restoration-id="container"]',
     );
@@ -189,8 +176,8 @@ const SelectionStatusBar = () => {
         <motion.div
           initial={{ y: '-100%', opacity: 0 }}
           animate={{
-            y: isMobileViewport ? (isVisible ? 0 : '-100%') : 0,
-            opacity: isMobileViewport ? (isVisible ? 1 : 0) : 1,
+            y: isVisible ? 0 : '-100%',
+            opacity: isVisible ? 1 : 0,
           }}
           exit={{ y: '-100%', opacity: 0 }}
           transition={{
