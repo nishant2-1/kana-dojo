@@ -150,7 +150,7 @@ export default function StreakMilestoneOverlay({
           {USE_DECORATIONS_BACKGROUND && (
             <div className='absolute inset-0 -z-10'>
               <Suspense fallback={<></>}>
-                <Decorations expandDecorations={false} interactive={true} />
+                <Decorations expandDecorations={false} interactive={false} />
               </Suspense>
             </div>
           )}

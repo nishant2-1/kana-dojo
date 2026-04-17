@@ -45,29 +45,52 @@ type CharacterStyle = {
 };
 
 type AnimState = 'idle' | 'exploding' | 'hidden' | 'fading-in';
+type BreakpointKey = 'base' | 'sm' | 'md' | 'lg' | 'xl';
+type LayoutConfig = {
+  cols: number;
+  cellSize: number;
+  gap: number;
+  bufferRows: number;
+};
 
 // ============================================================================
 // CONFIGURATION
 // ============================================================================
 
-// Grid configuration - matches Tailwind classes
-const GRID_CONFIG = {
-  desktop: { cols: 28, cellSize: 36, gap: 2 }, // grid-cols-28, text-4xl ~ 36px
-  mobile: { cols: 10, cellSize: 36, gap: 2 }, // grid-cols-10
+// Grid configuration per breakpoint.
+// xl+ intentionally stays unchanged from the previous desktop behavior.
+const GRID_CONFIGS: Record<BreakpointKey, LayoutConfig> = {
+  base: { cols: 9, cellSize: 18, gap: 2, bufferRows: 1 },
+  sm: { cols: 12, cellSize: 20, gap: 2, bufferRows: 1 },
+  md: { cols: 16, cellSize: 24, gap: 2, bufferRows: 2 },
+  lg: { cols: 22, cellSize: 30, gap: 2, bufferRows: 2 },
+  xl: { cols: 28, cellSize: 36, gap: 2, bufferRows: 2 },
 };
 
+const GRID_COL_CLASSES =
+  'grid-cols-9 sm:grid-cols-12 md:grid-cols-16 lg:grid-cols-22 xl:grid-cols-28';
+const CHAR_SIZE_CLASSES =
+  'text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl';
+
+const getBreakpointKey = (width: number): BreakpointKey => {
+  if (width >= 1280) return 'xl';
+  if (width >= 1024) return 'lg';
+  if (width >= 768) return 'md';
+  if (width >= 640) return 'sm';
+  return 'base';
+};
+
+const getLayoutConfig = (width: number): LayoutConfig =>
+  GRID_CONFIGS[getBreakpointKey(width)];
+
 // Calculate how many characters to render based on viewport
-const calculateVisibleCount = (interactive: boolean): number => {
+const calculateVisibleCount = (): number => {
   if (typeof window === 'undefined') {
-    // SSR fallback - render enough for large screens
-    return 784; // 28 cols × 28 rows
+    // SSR fallback - render enough for large screens (28 cols × 28 rows)
+    return 784;
   }
 
-  const config = interactive
-    ? window.innerWidth >= 768
-      ? GRID_CONFIG.desktop
-      : GRID_CONFIG.mobile
-    : GRID_CONFIG.desktop;
+  const config = getLayoutConfig(window.innerWidth);
 
   const { cols, cellSize, gap } = config;
   const viewHeight = window.innerHeight;
@@ -78,14 +101,10 @@ const calculateVisibleCount = (interactive: boolean): number => {
   const visibleRows = Math.ceil(effectiveHeight / rowHeight);
 
   // Add buffer rows for scroll/resize
-  const bufferRows = 2;
+  const { bufferRows } = config;
   const totalRows = visibleRows + bufferRows;
 
-  // Calculate total visible characters
-  const effectiveCols =
-    interactive && window.innerWidth < 768 ? GRID_CONFIG.mobile.cols : cols;
-
-  return effectiveCols * totalRows;
+  return cols * totalRows;
 };
 
 // ============================================================================
@@ -203,67 +222,71 @@ const precomputeStyles = async (
 interface InteractiveCharProps {
   style: CharacterStyle;
   onExplode: () => void;
+  intrinsicSize: number;
 }
 
-const InteractiveChar = memo(({ style, onExplode }: InteractiveCharProps) => {
-  const [animState, setAnimState] = useState<AnimState>('idle');
-  const isAnimating = useRef(false);
+const InteractiveChar = memo(
+  ({ style, onExplode, intrinsicSize }: InteractiveCharProps) => {
+    const [animState, setAnimState] = useState<AnimState>('idle');
+    const isAnimating = useRef(false);
 
-  const handleClick = useCallback(() => {
-    if (isAnimating.current) return;
-    isAnimating.current = true;
-    onExplode();
+    const handleClick = useCallback(() => {
+      if (isAnimating.current) return;
+      isAnimating.current = true;
+      onExplode();
 
-    setAnimState('exploding');
+      setAnimState('exploding');
 
-    // Animation state transitions - all self-contained
-    setTimeout(() => {
-      setAnimState('hidden');
+      // Animation state transitions - all self-contained
       setTimeout(() => {
-        setAnimState('fading-in');
+        setAnimState('hidden');
         setTimeout(() => {
-          setAnimState('idle');
-          isAnimating.current = false;
-        }, 500);
-      }, 1500);
-    }, 300);
-  }, [onExplode]);
+          setAnimState('fading-in');
+          setTimeout(() => {
+            setAnimState('idle');
+            isAnimating.current = false;
+          }, 500);
+        }, 1500);
+      }, 300);
+    }, [onExplode]);
 
-  const getAnimationStyle = (): React.CSSProperties => {
-    switch (animState) {
-      case 'exploding':
-        return { animation: 'explode 300ms ease-out forwards' };
-      case 'hidden':
-        return { opacity: 0 };
-      case 'fading-in':
-        return { animation: 'fadeIn 500ms ease-in forwards' };
-      default:
-        return {};
-    }
-  };
+    const getAnimationStyle = (): React.CSSProperties => {
+      switch (animState) {
+        case 'exploding':
+          return { animation: 'explode 300ms ease-out forwards' };
+        case 'hidden':
+          return { opacity: 0 };
+        case 'fading-in':
+          return { animation: 'fadeIn 500ms ease-in forwards' };
+        default:
+          return {};
+      }
+    };
 
-  return (
-    <span
-      className={clsx(
-        'inline-flex items-center justify-center text-4xl',
-        style.fontClass,
-        animState === 'idle' && 'cursor-pointer',
-      )}
-      aria-hidden='true'
-      style={{
-        color: style.color,
-        transformOrigin: 'center center',
-        pointerEvents: animState !== 'idle' ? 'none' : undefined,
-        contentVisibility: 'auto',
-        containIntrinsicSize: '36px',
-        ...getAnimationStyle(),
-      }}
-      onClick={animState === 'idle' ? handleClick : undefined}
-    >
-      {style.char}
-    </span>
-  );
-});
+    return (
+      <span
+        className={clsx(
+          'inline-flex items-center justify-center',
+          CHAR_SIZE_CLASSES,
+          style.fontClass,
+          animState === 'idle' && 'cursor-pointer',
+        )}
+        aria-hidden='true'
+        style={{
+          color: style.color,
+          transformOrigin: 'center center',
+          pointerEvents: animState !== 'idle' ? 'none' : undefined,
+          contentVisibility: 'auto',
+          containIntrinsicSize: `${intrinsicSize}px`,
+          ...getAnimationStyle(),
+        }}
+        onClick={animState === 'idle' ? handleClick : undefined}
+      >
+        {style.char}
+      </span>
+    );
+  },
+);
 
 InteractiveChar.displayName = 'InteractiveChar';
 
@@ -274,20 +297,22 @@ InteractiveChar.displayName = 'InteractiveChar';
 
 interface StaticCharProps {
   style: CharacterStyle;
+  intrinsicSize: number;
 }
 
-const StaticChar = memo(({ style }: StaticCharProps) => {
+const StaticChar = memo(({ style, intrinsicSize }: StaticCharProps) => {
   return (
     <span
       className={clsx(
-        'inline-flex items-center justify-center text-4xl',
+        'inline-flex items-center justify-center',
+        CHAR_SIZE_CLASSES,
         style.fontClass,
       )}
       aria-hidden='true'
       style={{
         color: style.color,
         contentVisibility: 'auto',
-        containIntrinsicSize: '36px',
+        containIntrinsicSize: `${intrinsicSize}px`,
       }}
     >
       {style.char}
@@ -312,7 +337,12 @@ const Decorations = ({
 }) => {
   const [styles, setStyles] = useState<CharacterStyle[]>([]);
   const [visibleCount, setVisibleCount] = useState<number>(() =>
-    calculateVisibleCount(interactive),
+    calculateVisibleCount(),
+  );
+  const [layoutConfig, setLayoutConfig] = useState<LayoutConfig>(() =>
+    typeof window === 'undefined'
+      ? GRID_CONFIGS.xl
+      : getLayoutConfig(window.innerWidth),
   );
   const { playClick } = useClick();
 
@@ -334,7 +364,16 @@ const Decorations = ({
     const handleResize = () => {
       if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
       resizeTimeoutRef.current = setTimeout(() => {
-        const newCount = calculateVisibleCount(interactive);
+        const newConfig = getLayoutConfig(window.innerWidth);
+        const newCount = calculateVisibleCount();
+        setLayoutConfig(prev =>
+          prev.cols === newConfig.cols &&
+          prev.cellSize === newConfig.cellSize &&
+          prev.gap === newConfig.gap &&
+          prev.bufferRows === newConfig.bufferRows
+            ? prev
+            : newConfig,
+        );
         if (newCount !== visibleCount) {
           setVisibleCount(newCount);
         }
@@ -346,7 +385,7 @@ const Decorations = ({
       window.removeEventListener('resize', handleResize);
       if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
     };
-  }, [interactive, visibleCount]);
+  }, [visibleCount]);
 
   // Load styles when visible count changes
   useEffect(() => {
@@ -391,15 +430,20 @@ const Decorations = ({
       // Interactive mode: each char manages its own animation state
       // Note: Using index as key is acceptable here since styles array is stable after precomputation
       return styles.map((style, index) => (
-        <InteractiveChar key={index} style={style} onExplode={handleExplode} />
+        <InteractiveChar
+          key={index}
+          style={style}
+          onExplode={handleExplode}
+          intrinsicSize={layoutConfig.cellSize}
+        />
       ));
     } else {
       // Static mode: simple display, no animations
       return styles.map((style, index) => (
-        <StaticChar key={index} style={style} />
+        <StaticChar key={index} style={style} intrinsicSize={layoutConfig.cellSize} />
       ));
     }
-  }, [styles, interactive, handleExplode]);
+  }, [styles, interactive, handleExplode, layoutConfig.cellSize]);
 
   if (styles.length === 0) return null;
 
@@ -415,7 +459,7 @@ const Decorations = ({
         <div
           className={clsx(
             'grid h-full w-full gap-0.5 p-2',
-            interactive ? 'grid-cols-10 md:grid-cols-28' : 'grid-cols-28',
+            GRID_COL_CLASSES,
           )}
         >
           {gridContent}
